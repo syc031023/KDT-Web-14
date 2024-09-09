@@ -1,0 +1,33 @@
+/* 4번 */
+
+.stripes div:nth-child(2n){
+    background-color: yellow;
+    color: black;
+  }
+  
+.stripes div:nth-child(2n+1){
+  background-color: navy;
+  color: white;
+  }
+
+/* 5번 */
+.box::before{
+  content: "택시";
+}
+
+.box::after{
+  content: "빨리";
+}
+
+/* 6번 */
+[disabled]{
+  background-color: red;
+}
+
+[placeholder="이름"]{
+  background-color: orange;
+} 
+
+input:not([placeholder]){
+  background-color: blue;
+}
