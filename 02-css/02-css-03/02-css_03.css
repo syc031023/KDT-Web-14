@@ -9,6 +9,7 @@
     */
     font-weight: 700;
     line-height: 4;  /* 요소의 글꼴 크기의 배수로 지정 */
+    text-align: center;
 }
 
 .google{
