@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+</head>
+<style>
+    .container{
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        border: 1px solid black;
+    }
+
+    .box{
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    .position-static{
+        background-color: red;
+    }
+
+    .position-relative{
+        position: relative;
+        left: 50px;
+        top: 30px;
+        background-color: orange;
+    }
+
+    .position-absolute{
+        position: absolute;
+        right: 30px;
+        bottom: 100px;
+        background-color: yellow;
+    }
+
+    .position-fixed{
+        position: fixed;
+        right: 100px;
+        top: 100px;
+        background-color: green;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box position-static"></div>
+        <div class="box position-relative">item1</div>
+        <div class="box position-absolute">item2</div>
+        <div class="box position-fixed">item3</div>
+    </div>
+</body>
+</html>

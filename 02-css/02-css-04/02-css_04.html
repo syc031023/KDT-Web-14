@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./02-css_03.css" />
+    <title>Position</title>
+</head>
+<style>
+    body{
+
+        /* 위치 명확하게 보기 위해 추가 */
+        margin: 0;
+
+        /* position-fixed 스크롤 되어도 움직이지 않음을 보기 위함 */
+        background-color: linear-gradient(white, orange);
+        height: 2000px;
+    }
+    div{
+        width: 100px;
+        height: 100px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    /* static은 기본값이기 때문에 따로 작성하지 않아도 됨 */
+    /* 
+    - inline 요소라면 왼쪽에서 오른쪽으로 쌓임
+    - block 요소라면 위에서 아래로 차곡차곡 쌓임
+    */
+    /* top, bottom, left, right 속성 적어도 영향 X */
+    .position-static{
+        position: static;
+        background-color: pink;
+        top: 100px; /* 영향 없음 */
+    }
+
+    /* relative: 상대 위치 */
+    /* 일반적인 흐름에 배치하되, top, bottom, left, right */
+    /* 
+    - 자신이 원래 있어야 하는 위치 기준
+    - top: 위로 부터의 여백
+    - bottom: 아래로부터의 여백
+    - left: 오른쪽으로부터의 여백
+    - right: 왼쪽으로부터의 여백
+    */
+    .position-relative{
+        position: relative;
+        background-color: aquamarine;
+        left: 100px;
+    }
+
+    /* absolute: 절대 위치 */
+    /* 
+    누구를 기준?
+    - position이 static이 아닌 값ㄷ을 갖는 가장 가까운 조상 기준
+    - position static이 없다 라고 한다면? 뷰포트 기준(body)
+    */
+    .position-absolute{
+        position: absolute;
+        background-color: gold;
+
+        left: 100px;
+        bottom: 0;
+    }
+
+    /* fixed: 고정 위치 */
+    /* 
+    - viewport(화면에 보이는 것) 기준으로 특정 위치에 배치
+    - 스크롤 되어도 계속 보인다 -> header 제작시에 많이 사용
+    - top, bottom, left, right 하나 이상 써야 함
+    */
+    .position-fixed{
+        position: fixed;
+        background-color: coral;
+
+        /* bottom: 0; */
+        top: 0;
+        width: 100%;
+    }
+
+</style>
+<body>
+    <div class="position-static">static</div>
+    <div class="position-relative">relative</div>
+    <div class="position-absolute">absolute(body)</div>
+    <div style="position: relative; background-color: blueviolet;">
+        <div style="background-color: antiquewhite;">rel-absolute</div>
+        <div class="position-absolute">
+            <div>absolute</div>
+        </div>
+    </div>
+    <div class="position-fixed">fixed</div>
+</body>
+</html>

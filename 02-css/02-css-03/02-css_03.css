@@ -35,3 +35,76 @@ button {
     background-color: white;
     border-radius: 5px;
 }
+
+/* box-size */
+.container{
+    /* box2를 나란히 두기 위해 사용 */
+    display: flex;
+}
+
+.box2{
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: lightblue;
+}
+
+.content-box{
+    box-sizing: content-box;
+}
+
+.border-box{
+    box-sizing: border-box;
+}
+
+/* 
+    content-box
+    장점
+    - content의 유연성: 지정된 크기에 따라 동적으로 조정되므로, 디자인의 유연성이 높다. 
+    - 디자인 제어: padding 이나 테두리를 분리하여 디자인 요소를 더 정교하게 제어 가능
+    단점
+    - 레이아웃 복잡성: 다 각각 계산해야 하므로 시간과 노력 소요
+    - 계산 오류 가능성
+
+    border-box
+    장점
+    - 예측가능성: 총 너비와 높이가 예측하기 쉽다. 
+    - 유지보수, 간편한 계산 가능
+    단점
+    - 내용 공간 감소: 실체 콘텐트 영역이 작아짐
+*/
+
+/* visibility */
+.square {
+    width: 100px; 
+    height: 100px; 
+    border: 1px solid; 
+    /* display: inline-block; */
+} 
+.d-none {
+    display: none;
+    background-color: red; 
+}
+.invisible {
+    visibility: hidden; 
+    background-color: orangered;
+}
+.opacity-0 {
+    opacity: 0; 
+    background-color: tomato;
+}
+
+.opacity-0:hover{
+    opacity: 1;
+}
+
+/* overflow */
+.scroll{
+    overflow: scroll;
+    overflow-y: auto;
+}
+
+.auto{
+    overflow: auto;
+}

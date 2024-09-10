@@ -17,3 +17,32 @@
  .orange div:nth-child(3){
      background-color: red;
  }
+
+
+/* box-size */
+.box{
+    width: 100px;
+    height: 100px; 
+    padding: 20px;
+    border: 15px solid red;
+    background-color: orange;
+}
+
+.content-box{
+    box-sizing: content-box;
+}
+
+.border-box{
+    box-sizing: border-box;
+}
+
+/* 5번 */
+.box2{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}
+
+.box2:hover{
+    opacity: 0;
+}
