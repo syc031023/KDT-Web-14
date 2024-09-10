@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index</title>
+</head>
+<style>
+    .parent{
+        position: relative;
+        width: 300px;
+        height: 100px;
+        border: 3px dotted dodgerblue;
+    }
+    .circle{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        
+        position: absolute;
+    }
+    .c1{
+        background-color: cornflowerblue;
+        top: 0;
+        left: 200px;
+        z-index: 1;
+    }
+    .c2{
+        background-color: rgb(63, 125, 239);
+        top: 0;
+        left: 150px;
+        z-index: 2;
+    }
+    .c3{
+        background-color: rgb(0, 88, 250);
+        top: 0;
+        left: 100px;
+        z-index: 3;
+    }
+    .c4{
+        background-color: rgb(0, 60, 171);
+        top: 0;
+        left: 50px;
+        z-index: 2;
+    }
+    .c5{
+        background-color: rgb(0, 29, 83);
+        top: 0;
+        left: 0px;
+        z-index: 1;
+    }
+</style>
+<body>
+    <h2>z-index</h2>
+    <div class="parent">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+        <div class="circle c4"></div>
+        <div class="circle c5"></div>
+    </div>
+</body>
+</html>
