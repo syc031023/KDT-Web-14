@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+</head>
+<style>
+    div {
+        width: 300px;
+        height: 200px;
+        margin-bottom: 30px;
+    }
+
+    .grad-1 {
+        background: linear-gradient(grey, tomato) ;
+    }
+
+    .grad-2 {
+        background: linear-gradient(to left, grey, tomato);
+    }
+
+    .grad-3 {
+        background: linear-gradient(90deg, grey 75%, tomato);
+    }
+
+    .grad-4 {
+        background: linear-gradient(green, tomato, gold);
+    }
+
+    .background-image {
+        background-color: orange;
+        background-image: url(https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a);
+        width: 500px;
+        height: 500px;
+
+        /* background-repeat */
+        background-repeat: no-repeat;
+        /* repeat이 default */
+
+        /* background-position */
+        background-position: left top;
+        background-position: center;
+        background-position: 100px 100px; /* x축 y축 */
+        background-position: 200px; /* x축에 대해서만 적용 */
+
+        /* background-size */
+        /* cover: 더 넓은 값에 맞춤, contain: 더 짧은 값에 맞춤 */
+        background-size: auto;
+        background-size: 100px;
+        background-size: cover;
+        background-size: contain;;
+
+    }
+
+    .scroll {
+        width: 500px;
+        height: 500px;
+        background-image: url(https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a);
+        overflow: scroll;
+        background-repeat: no-repeat;
+        /* background-attachment: 요소의 배경 이미지 스크롤 특성 */
+        background-attachment: fixed;
+    }
+</style>
+<body>
+    <div class="grad-1"></div>
+    <div class="grad-2"></div>
+    <div class="grad-3"></div>
+    <div class="grad-4"></div>
+
+    <hr>
+
+    <div class="background-image"></div>
+    <div class="scroll">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum fugiat hic qui expedita cumque repudiandae id nobis deleniti facilis cum. Autem distinctio mollitia sequi doloribus dolore perferendis atque repellendus saepe!
+        A perferendis cumque modi tempore sunt, odio impedit rerum delectus qui iusto maxime quo, fugiat culpa. Necessitatibus quis, doloribus consequatur aliquid obcaecati recusandae voluptatem in nam libero ipsam sapiente et?
+        Aperiam iure amet sapiente in! Mollitia voluptatum dolorem neque, praesentium tenetur vero optio deserunt cupiditate architecto minus minima accusamus sit quam ullam nulla veniam molestiae tempora repellendus quisquam, totam reprehenderit.
+        Veniam nihil eveniet blanditiis exercitationem, distinctio perferendis illum tempora aspernatur sed debitis commodi tempore odio optio dignissimos dolorem dolor! Repudiandae, repellat porro asperiores inventore harum dolore magnam iste a reiciendis.
+        Odit consequuntur similique, adipisci, blanditiis consectetur tenetur porro quos non magni nostrum asperiores autem officiis! Sint harum molestias nostrum dolorem officia, pariatur amet in odio cupiditate architecto culpa et officiis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam consequatur asperiores eius vero, nostrum nam nesciunt nobis perferendis quas ratione beatae sapiente, illum nisi, voluptate consectetur est quod. Necessitatibus, optio.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil assumenda molestiae nesciunt quae! Ipsa harum saepe dolores cupiditate rem rerum necessitatibus pariatur laudantium incidunt eius! Porro voluptas sed odit! Esse.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, illo. Cum cumque veritatis, blanditiis, dignissimos vitae maxime sapiente architecto odio animi vero sit facere adipisci ea inventore aperiam quibusdam vel.
+        Quidem labore sequi officia unde, quod magni aperiam incidunt. Assumenda impedit consequuntur maiores molestias excepturi sit nemo mollitia quos error quaerat consectetur, atque deleniti beatae! Quod dolorem nesciunt eveniet veritatis.
+        Enim earum fugit nisi ut veritatis numquam quisquam debitis? Odit suscipit libero repellat fuga laborum veniam optio quo, omnis in at sed laudantium asperiores sint dolorem nostrum esse ducimus commodi.
+    </div>
+</body>
+</html>
