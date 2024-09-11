@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform practice</title>
+</head>
+<style>
+    img{
+        width: 100px;
+        height: 80px;
+        transform: skewY(20deg);
+    }
+
+    .container{
+        background-color: lightgray;
+        width: 500px;
+        height: 400px;
+    }
+
+    .container div{
+        display: inline-block;
+        margin: 30px;
+        justify-content: center;
+    }
+
+    #img_1{
+        position: absolute;
+        z-index: 3;
+        /* left: 30vw;
+        top: 45vh; */
+        transform: translate(100px, 100px) skewY(20deg);
+        
+    }
+    #img_2{
+        position: absolute;
+        z-index: 2;
+        /* left: 40vw;
+        top: 40vh; */
+        transform: translate(100px, 100px) skewY(20deg);
+    }
+    #img_3{
+        position: absolute;
+        z-index: 1;
+        /* left: 50vw;
+        top: 35vh; */
+        transform: translate(100px, 100px) skewY(20deg);
+    }
+
+
+</style>
+<body>
+    <div class="container">
+        <div>
+            <img id="img_1" src="/Users/song-youngchae/Documents/사진/디카/100NIKON/DSCN0749.JPG">
+        </div>
+        <div>
+            <img id="img_2" src="/Users/song-youngchae/Documents/사진/디카/100NIKON/DSCN0752.JPG">
+        </div>
+        <div>
+            <img id="img_3" src="/Users/song-youngchae/Documents/사진/디카/100NIKON/DSCN0750.JPG">
+        </div>
+    </div>
+</body>
+</html>
