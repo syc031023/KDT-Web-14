@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mediaquery2</title>
+</head>
+<style>
+    /* 가로 세로 모드 */
+    @media screen and (orientation: landscape){
+        /* 가로 모드 */
+        body {
+            background-color: pink;
+        }
+    }
+    @media screen and (orientation: portrait){
+        /* 세로 모드 */
+        body {
+            background-color: gold;
+        }
+    }
+
+    /* ~부터 ~까지 범위 작성 */
+    @media screen and (min-width: 300px) and (max-width: 600px) {
+        /* 비교 연산자 사용 가능 */
+        /* @media screen and (300px <= width <= 600px) */
+        div{
+            background-color: purple;
+        }
+    }
+</style>
+<body>
+    <div>more and less</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media query practice</title>
+</head>
+<style>
+    /* 1번 */
+    /* @font-face {
+        font-family: 'DungGeunMo';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @media screen and (min-width: 500px){
+        body{
+            background-color: skyblue;
+        }
+    }
+    @media screen and (max-width: 300px){
+        body{
+            background-color: orange;
+        }
+    }
+    @media screen and (min-height: 500px){
+        body{
+            background-color: green;
+        }
+    }
+    @media screen and (max-height: 300px){
+        p{
+            font-family: 'DungGeunMo';
+        }
+    } */
+
+    /* 2번 */
+    div{
+        width: 100px;
+        height: 100px;
+        border-radius: 10%;
+        background-color: skyblue;
+        margin-bottom: 30px;
+        margin-right: 30px;
+    }
+
+    @media screen and (min-width: 700px) {
+        div{
+            display: inline-block;
+            background-color: black;
+        }
+    }
+</style>
+<body>
+    <!-- 1번 -->
+    <!-- <p>미디어 쿼리 실습</p> -->
+
+    <!-- 2번 -->
+     <div></div>
+     <div></div>
+     <div></div>
+</body>
+</html>
