@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1번
+        let colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"];
+
+        console.log(colors[2]);
+        colors.push("white");
+        console.log(colors);
+        console.log(colors.indexOf("black"));
+        console.log(colors.reverse());
+
+        //2번
+        let me = {
+            name: "송영채",
+            age: 22,
+            address: "서울시 마포구",
+            myName: function(){
+                console.log("안녕하세요.");
+                return me.name + "입니다.";
+            }
+        }
+
+        console.log(me);
+        console.log(me.myName());
+        console.log("저는", me.age, "살 입니다.");
+        console.log(me.address + "에 거주 중입니다.");
+
+        //3번
+        
+        console.log(typeof 10, "isn't", typeof "ABC", "data type.");
+        console.log("typeof를 array나 null에 사용하면,", typeof null , "결과를 얻을 수 있다.");
+
+        //4번
+        let mathScore = "77";
+        let engScore = "88";
+
+        let avgScore = (Number(mathScore) + Number(engScore))/2;
+
+        console.log(`The average score is ${avgScore}.`)
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js tyle</title>
+    <script>
+        /* 자료형
+        - 기본
+        - string: 문자열
+        - number: 숫자형
+        - boolean: 참, 거짓
+        - null: 아무것도 없는
+        - undefine: 정의되지 않음
+
+           객체
+        - array (배열): 데이터를 순차적으로 저장
+        - object (객체)
+        */
+
+        // 1. string
+        let myName = "길동";
+        let email = "gildong@naver.com";
+        let city = '"서울"'; 
+
+        console.log(myName);
+        console.log(email);
+        console.log(city);
+
+        //문자와 변수를 동시에 출력
+        console.log("내 이름은", myName, "이고 이메일은", email, "입니다.") // , 로 이어붙이기
+        console.log("내 이름은" + myName + "이고 이메일은" + email + "입니다.") // + 로 이어붙이기 (띄어쓰기)
+        //탬플릿 리터럴
+        console.log(`내 이름은 ${myName}이고 이메일은 ${email} 입니다.`);
+        let gildong = `내 이름은 ${myName}이고 이메일은 ${email} 입니다.`;
+        console.log(gildong);
+
+        // 2. number
+        let number = 123;
+        let opacity = 0.7;
+
+        console.log(number);
+        console.log(opacity);
+
+        //NaN: Not a Number
+        
+        console.log("apple" - 3);
+
+        // 3. boolean
+        let checked = true;
+        let unchecked = false;
+
+        console.log(checked);
+        console.log(unchecked);
+
+        // 4. undefined
+        let undef;
+        console.log(undef);
+
+        // 5. Null
+        let empty = null;
+        console.log(empty);
+
+        // 6. array
+        let fruits = ['orange', 'fineapple', 'grape', 'apple'];
+        let fruits2 = new Array('orange', 'fineapple', 'grape', 'apple');
+
+        console.log(fruits);
+        console.log(fruits[0], fruits[1]);
+
+        let data1 = [1, "gildong", false, null, undefined];
+        console.log(data1)
+
+        // 배열의 속성, 함수
+        console.log('length: ', fruits.length);
+        fruits.push("melon");
+        console.log("push", fruits)
+
+        // 7. object
+        let cat = {
+            name: "나비",
+            age: 1,
+            isCute: true,
+            mew: function(){
+                console.log("냐옹1");
+                return "냐옹2";
+            }            
+        }
+
+        console.log(cat);
+
+        //점 표기법
+        //객체 이름.key이름 -> 반환값 = value
+        console.log(cat.name);
+        console.log(cat.age);
+        console.log(cat.isCute);
+        console.log(cat.mew())
+
+        //대괄호 표기법
+        //객체이름[key 이름] -> 반환값 = value
+        console.log(cat["name"]);
+
+        //typeof 사용{
+        let und;
+        console.log(typeof "a");
+        console.log(typeof 123);
+        console.log(typeof true);
+        console.log(typeof cat); //object
+        console.log(typeof fruits); //object
+        console.log(typeof Nan); //object
+        console.log(typeof null) //object
+        console.log(typeof und);
+
+        //형변환
+        let mathScore = prompt("수학 점수를 입력하세요.");
+        let engScore = prompt("영어 점수를 입력하세요.");
+
+        let avg = (Number(mathScore) + Number(engScore))/2;
+        console.log(avg);
+
+        //문자 형변환
+        // String(변환할 값) or 변환할값.toString()
+        // toString() -> null, undefine 사용 X
+        let str1 = true;
+        let str2 = 123
+        let str3 = null
+
+        console.log(String(str1));
+        console.log(typeof String(str1));
+        console.log(typeof str1); //기존의 값이 변하지는 않음.
+
+        console.log(str2.toString());
+        console.log(typeof str1.toString());
+        console.log(typeof str2); //기존의 값이 변하지는 않음.
+
+        console.log(String(str3));
+        //console.log(str3,toStiring); //error
+
+        //숫자 형변환
+        // Number(변환할 값)
+        let n1 = true;
+        let n2 = false;
+        let n3 = "123.9";
+
+        console.log(Number(n1)); // 1
+        console.log(Number(n2)); // 0
+        console.log(Number(n3)); // 123.9
+
+        //증감 연산자
+        let result1, result2;
+        let num1 = 10, num2  = 10;
+
+        result1 = num1++;
+        console.log("result1: ", result1);
+        console.log("num1: ", num1);
+
+        result2 = num2++;
+        console.log("result2: ", result2);
+        console.log("num2: ", num2);
+
+        //비교 연산자
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

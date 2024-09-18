@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+    <script>
+        //함수 선언문
+        //function 함수 이름 (input -> 매개변수, 인자, 파라미터 라고 부름){
+            //함수 영역, 스코프 라고 부름
+            //함수에서 실행할 코드 작성}
+        sayHello();
+        function sayHello(){
+            console.log("hello");
+        }
+        sayHello();
+
+        //sayHello2(); -> error
+
+        //함수 표현식
+        let sayHello2 = function(){
+            console.log("hello2");
+        };
+        sayHello2();
+
+        //화살표 함수 (함수 표현식이랑 동일하게 동작)
+        let sayHello3 = () => {console.log("hello3");};
+
+        sayHello3();
+
+        //매개변수가 있는 경우
+        function hello(name){
+            console.log(`안녕 내 이름은 ${name}이야`);
+
+            let age = 10; //지역변수
+            return age;
+        }
+        hello("길동");
+        let age = hello("길동");
+        console.log(age);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
