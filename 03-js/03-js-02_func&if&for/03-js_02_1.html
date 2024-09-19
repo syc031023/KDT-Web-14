@@ -28,16 +28,36 @@
 
         sayHello3();
 
+        let grade = 3; //전역변수
+
         //매개변수가 있는 경우
-        function hello(name){
+        //매개변수도 하나의 변수이기 때문에 동일한 이름으로 변수로 선언할 수 없음
+        function hello(name, grade){
             console.log(`안녕 내 이름은 ${name}이야`);
 
             let age = 10; //지역변수
-            return age;
+            console.log("hello 함수 안에서 age: ", age);
+
+            //let name = "안녕"; //매개변수로 선언되어 있음 -> error
+
+            console.log("함수 안에서 grade: ", grade); //매개변수로 선언한 값이 출력됨
+
+            console.log(grade); //함수 밖에서 선언
+            return age; //age 값 반환
+
+            console.log("안녕"); //return 다음에 오기 때문에 실행 안 됨
         }
-        hello("길동");
-        let age = hello("길동");
+        hello("길동", 5);
+        //console.log(age); //error -> 함수 안에 선언한 변수 age -> 전역변수 아니기 때문에 함수 밖에서 X
+        let age = hello("길동", 5);
         console.log(age);
+
+        console.log("hello 함수 밖에서 grade: ", grade);
+
+        //매개변수 여러개
+        function test(num1, num2){ //,로 구분
+            return 0;
+        }
 
 
     </script>

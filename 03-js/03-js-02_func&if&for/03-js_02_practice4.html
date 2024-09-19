@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 practice</title>
+    <script>
+        //1번
+        for(let i=0; i<=10000; i++){
+            if(i%13 == 0 && i%2 == 1){
+                console.log(i);
+            }
+        }
+
+        let num = prompt("숫자를 입력하시오.");
+        for(let i=0; i<=num; i++){
+            if(i%13 == 0 && i%2 == 1){
+                console.log(i);
+            }
+        }
+
+        //2번
+        for(let i=2; i<=9; i++){
+            console.log(`--------${i}단--------`);
+            for(let j=1; j<=9; j++){
+                console.log(`${i}x${j}=${i*j}`);
+            }
+        }
+
+        //3번
+        let sum = 0;
+        for(let i=0; i<=100; i++){
+            if(i%2 == 0 || i%5 == 0){
+                sum += i;
+            }
+        }
+        console.log(sum);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
