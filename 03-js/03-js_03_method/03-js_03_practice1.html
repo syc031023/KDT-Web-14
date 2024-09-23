@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice1</title>
+    <script>
+        let array = [];
+        for(let i=1; i<=100; i++){
+            array.push(i);
+        }
+
+        let sum1 = 0;
+
+        for(let i=0; i<100; i++){
+            sum1 = sum1 + array[i];
+        }
+        console.log("sum(for):", sum1);
+
+        let sum2 = 0;
+
+        for(let a of array){
+            sum2 = sum2 + a;
+        }
+        console.log("sum(for of):", sum2);
+
+        let sum3 = 0;
+        array.forEach((a) => {
+            sum3 = sum3 + a;
+        })
+        console.log("sum(forEach):", sum3);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

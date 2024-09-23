@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 메소드</title>
+    <script>
+        //문자열 관련 메소드
+        let str = " Happy day~! ";
+
+        //1. length: 문자열의 길이를 반환 (공백 포함)
+        console.log("length:", str.length); // 13 (콩백 포함)
+
+        //2. toUpperCase() & toLowerCase(): 문자 전체를 대문자, 혹은 소문자로 변경 (영어)
+        console.log("toUpperCase():", str.toUpperCase());
+        console.log("toLowerCase():", str.toLowerCase());
+
+        //3. indexOf(''): 매개변수로 문자열을 받아서 몇번째 인덱스인지 숫자 반환
+        console.log("indexOf('y'):", str.indexOf('y'));
+        console.log("lastIndexOf('y'):", str.lastIndexOf('y')); //뒤에서부터
+        console.log("indexOf('e'):", str.indexOf('e')); //없는 문자열 -> -1 출력
+
+        //4. slice(startIdx[, endIdx]): startIdx부터 endIdx-1까지 슬라이싱, 매개변수로 음수값도 가능
+        console.log("slice(5,9):", str.slice(7, 10));
+        console.log("slice(2):", str.slice(2)); //startIdx부터 끝까지 slice
+
+        //5. replace(str1, str2): str1를 str2로 변경
+        console.log("replace('p', 'a'):", str.replace('p', 'a')); // 제일 먼저 찾아지는 한 문자열만 바꿈
+        console.log("replaceAll('a', 'k'):", str.replaceAll('a', 'k')); //찾아지는 모든 요소 변경
+        
+        //6. repeat(n): 문자열에 대해 n번 반복
+        console.log("repeat(10):", str.repeat(10));
+
+        //7. split(): 매개변수로 들어온 문자열을 기준으로 str을 쪼개서 배열로 저장
+        // 기준값은 없어짐
+        console.log("split(''):", str.split(""));
+        console.log("split(' '):", str.split(" "));
+        console.log("split('a'):", str.split("a"));
+
+        //8. trim(): 문자열의 양끝 공백 없애기
+        console.log("trim 전:", str.length);
+        console.log("trim 후:", str.trim().length); //메소드 체이닝과 연관
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
