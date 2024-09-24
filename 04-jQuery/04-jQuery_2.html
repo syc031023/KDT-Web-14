@@ -18,7 +18,6 @@
             li.innerText = "append()로 추가된 JS";
             ul.append(li);
         }
-
         function appendJQ(){
             $(".colors").append("<li>append()로 추가된 jQuery</li>");
         }
@@ -30,9 +29,74 @@
             li.innerText = "append()로 추가된 JS";
             ul.prepend(li);
         }
-
         function prependJQ(){
             $(".colors").prepend("<li>append()로 추가된 jQuery</li>");
+        }
+
+        //after
+        function afterJS(){
+            let green = document.querySelector(".green");
+            let li = document.createElement("li");
+            li.innerText = "after() 형제요소로 추가된 js";
+            green.after(li);
+        }
+        function afterJQ(){
+            $(".green").after("<li>after() 형제 요소로 추가된 jQuery</li>")
+        }
+
+        //before
+        function beforeJS(){
+            let green = document.querySelector(".green");
+            let li = document.createElement("li");
+            li.innerText = "after() 형제요소로 추가된 js";
+            green.before(li);
+        }
+        function beforeJQ(){
+            $(".green").before("<li>after() 형제 요소로 추가된 jQuery</li>")
+        }
+
+        //요소 삭제
+        //remove
+        function removeJS(){
+            let li = document.querySelector(".green");
+            li.remove();
+        }
+        function removeJQ(){
+            $(".green").remove();
+        }
+
+        // empty()
+        function emptyJS() {
+            let ul = document.querySelector(".colors");
+            ul.innerHTML = "";
+        }
+        function emptyJquery() {
+            $(".colors").empty();
+        }
+
+        //요소 탐색
+        function findParent(){
+            //parent(): 부모요소 반환
+            console.log($(".child2").parent());
+        }
+
+        function findParents(){
+            //parent(): 부모, 조상 요소 반환
+            console.log($(".child2").parents());
+        }
+
+        function findNext(){
+            //next(): 다음 형제 반환, nextSibiling(JS)
+            console.log($(".child2").next());
+        }
+        function findPrev(){
+            //prev(): 이전 형제 반환, previousSibiling(JS)
+            console.log($(".child2").prev());
+        }
+
+        function findChildren(){
+            //children: 모든 자식 요소 반환
+            console.log($(".parent").children());
         }
 
 
@@ -42,7 +106,7 @@
     <h2>요소 추가하기</h2>
     <ul class="colors">
         <li>orange</li>
-        <li>green</li>
+        <li class="green">green</li>
         <li>navy</li>
     </ul>
     <h3>append(): 선택된 요소의 맨 마지막 자식으로 추가</h3>
@@ -52,5 +116,38 @@
     <h3>prepend(): 선택된 요소의 맨 앞 자식으로 추가</h3>
     <button onclick="prependJS()">prependJS</button>
     <button onclick="prependJQ()">prependJQ</button>
+
+    <h3>after(): 선택된 요소의 다음 형제로 추가</h3>
+    <button onclick="afterJS()">afterJS</button>
+    <button onclick="afterJQ()">afterJQ</button>
+
+    <h3>before(): 선택된 요소의 이전 형제로 추가</h3>
+    <button onclick="beforeJS()">buttonJS</button>
+    <button onclick="beforeJQ()">buttonJQ</button>
+
+    <h3>remove(): 선택된 요소 삭제</h3>
+    <button onclick="removeJS()">removeJS</button>
+    <button onclick="removeJQ()">removeJQ</button>
+
+    <h3>remove(): 선택된 요소의 자식 요소 삭제</h3>
+    <button onclick="emptyJS()">emptyJS</button>
+    <button onclick="emptyJQ()">emptyJQ</button>
+
+    <hr>
+
+    <h2>요소 탐색</h2>
+    <div class="ancestor">
+        <div class="parent">
+            <div>자식1</div>
+            <div class="child2">자식2</div>
+            <div>자식3</div>
+        </div>
+    </div>
+
+    <button onclick="findParent()">부모 찾기</button>
+    <button onclick="findParents()">조상 모두 팢기</button>
+    <button onclick="findNext()">부모 찾기</button>
+    <button onclick="findPrev()">조상 모두 팢기</button>
+    <button onclick="findChildren()">모든 자식 찾기</button>
 </body>
 </html>
