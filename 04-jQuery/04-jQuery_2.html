@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script 
+        src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous">
+    </script>
+    <script>
+        //요소 추가
+        //append()
+        function appendJS(){
+            let ul = document.querySelector(".colors");
+            let li = document.createElement("li");
+            li.innerText = "append()로 추가된 JS";
+            ul.append(li);
+        }
+
+        function appendJQ(){
+            $(".colors").append("<li>append()로 추가된 jQuery</li>");
+        }
+
+        //prepend()
+        function prependJS(){
+            let ul = document.querySelector(".colors");
+            let li = document.createElement("li");
+            li.innerText = "append()로 추가된 JS";
+            ul.prepend(li);
+        }
+
+        function prependJQ(){
+            $(".colors").prepend("<li>append()로 추가된 jQuery</li>");
+        }
+
+
+    </script>
+</head>
+<body>
+    <h2>요소 추가하기</h2>
+    <ul class="colors">
+        <li>orange</li>
+        <li>green</li>
+        <li>navy</li>
+    </ul>
+    <h3>append(): 선택된 요소의 맨 마지막 자식으로 추가</h3>
+    <button onclick="appendJS()">appendJS</button>
+    <button onclick="appendJQ()">appendJQ</button>
+
+    <h3>prepend(): 선택된 요소의 맨 앞 자식으로 추가</h3>
+    <button onclick="prependJS()">prependJS</button>
+    <button onclick="prependJQ()">prependJQ</button>
+</body>
+</html>
