@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery EventListener</title>
+    <!-- 기본 jQuery CDN -->
+    <script 
+        src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous">
+    </script>
+</head>
+<style>
+    .container{
+        height: 1000px;
+    }
+</style>
+<body>
+    <div class="container">
+        <input type="text">
+    </div>
+
+    <button>버튼</button>
+
+    <script>
+        //로드 이벤트
+        
+        //Javascript
+        window.addEventListener("load", function(){
+            $(".container").append("<h1>안녕1</h1>");
+        });
+
+        //jQuery
+        $(function(){
+            $(".container").append("<h1>안녕2</h1>");
+        });
+
+        $(window).ready(function(){
+            $(".container").append("<h1>안녕3</h1>");
+        });
+
+        //마우스 이벤트
+        //click: 클릭 일어났을 때 실행
+        $("button").click(function(){
+            alert("클릭");
+        });
+        // on() == addEventListener()
+        $("button").on("click", function(){
+            alert("클릭");
+        });
+
+        //mouseover: 요소 영역에 마우스 올라가는 순간
+        $("button").mouseover(function(){
+            console.log("mouseover");
+        });
+
+        //hover: 요소 영역에 마우스가 올라가 있는 동안
+        $("button").hover(function(){
+            console.log("hover");
+        });
+
+        //scroll()
+        $(window).scroll(function(){
+            console.log("scroll!");
+        });
+
+        //keyboard
+        $("input").keyup(function(e){ //이벤트 객체 e
+            console.log("keyup!");
+            console.log(e.target);
+            console.log(e.key === "Enter");
+
+            console.log('this:', this);
+        })
+
+    </script>
+</body>
+</html>
