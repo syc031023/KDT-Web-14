@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // spread 연산자
+    // 반복 가능한 객체에 대해서 단일 요소로 아북을 해제하는 역할
+
+    // spread om array
+    const a = [1, 2, 3];
+    const b = [4, 5]
+    const spread  = {...a, ...b} ;
+    console.log(spread);
+
+    // spread in string 
+    const c = [..."hello"];
+    console.log(c);
+    const d = "hello".split("");
+    console.log(d);
+
+    const chip = {
+        base: "chip",
+        company: "lotte",
+    };
+
+    const potatoChip = {
+        ...chip,
+        flavor: "potato",
+    };
+
+    console.log(potatoChip);
+
+    const sweetPotatoChip = {
+        ...potatoChip,
+        flavor: "sweet fotato",
+    };
+
+    console.log(sweetPotatoChip);
+    
+    
+    
+    
+    
+</script>
+<body>
+    
+</body>
+</html>
