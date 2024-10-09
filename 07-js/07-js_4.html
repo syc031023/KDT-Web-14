@@ -39,6 +39,25 @@
     const house2 = new House(2007, "자이", 200);
     console.log(house2);
     
+    // 클래스 상속
+    // 부모 클래스: House
+    // 자식 클래스: Apartment
+
+    class Apartment extends House {
+        constructor(year, name, window, floor){
+            // 부모 객체에서 상속 받아옴 = 상속한 부모 클래스의 생성자 호출
+            super(year, name, window);
+            this.floor = floor;
+        }
+
+        getAptInfo(){
+            return `${this.year}년에 지어진 ${this.name} 아파트의 층수는 ${this.floor}`;
+        }
+    }
+
+    const apt1 = new Apartment(2022, "레미안", 100, 30);
+    console.log(apt1.getAptInfo());
+    apt1.getAge();
     
 </script>
 <body>
