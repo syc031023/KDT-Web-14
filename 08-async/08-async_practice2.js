@@ -24,15 +24,28 @@ function hell(){
     });
 }
 
-call('kim')
-.then((name) => {
+// call('kim')
+// .then((name) => {
+//     console.log(name + '반가워');
+//     return back();
+// })
+// .then((txt) => {
+//     console.log(txt + '을 실행했구나');
+//     return hell();
+// })
+// .then((message) => {
+//     console.log(('여기는' + message)); 
+// });
+
+async function exec(){
+    let name = await call('kim');
     console.log(name + '반가워');
-    return back();
-})
-.then((txt) => {
+
+    let txt = await back();
     console.log(txt + '을 실행했구나');
-    return hell();
-})
-.then((message) => {
+
+    let message = await hell();
     console.log(('여기는' + message)); 
-});
+}
+
+exec();
