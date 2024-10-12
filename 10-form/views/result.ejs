@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Result</title>
+</head>
+<body>
+    <h1><%= title %> 폼 결과 확인하기</h1>
+    <% if(userInfo.id) { %>
+        <div><span><%= userInfo.id %></span>님 환영합니다!</div>
+    <% } %>
+    <% if(userInfo.name) { %>
+        <div><span><%= userInfo.name %></span>님 환영합니다!</div>
+    <% } %>
+    <% if(userInfo.pw) { %>
+        <div>비밀번호는 <span><%= userInfo.pw %></span></div>
+    <% } %>
+    <% if(userInfo.email) { %>
+        <div>이메일은 <span><%= userInfo.email %></span></div>                                                                                                 
+    <% } %>
+    <% if(userInfo.grade) { %>
+        <div><span><%= userInfo.grade %></span> 학년이군요!
+        </div>                                                                                                 
+    <% } %>
+    <% if(userInfo.gender) { %>
+        <div>성별: <span><%= userInfo.gender %></span></div>                                                                                                 
+    <% } %>
+    <% if(userInfo.birthday) { %>
+        <div>생년월일: <span><%= userInfo.birthday[0] + '년 ' + userInfo.birthday[1] + '월 ' + userInfo.birthday[2] + '일'  %></span></div>                                                                                                 
+    <% } %>
+    <% if(userInfo.interest) { %>
+        <div>관심사: <span><%= userInfo.interest %></span></div>                                                                                                 
+    <% } %>
+    <% if(userInfo.interest) { %>
+        <div>좋아하는 색상: <span><%= userInfo.color %></span></div>                                                                                                 
+    <% } %>
+    <% if(userInfo.number) { %>
+        <div>좋아하는 숫자: <span><%= userInfo.number %></span></div>                                                                                                 
+    <% } %>
+    
+    <% console.log(userInfo) %>
+</html>
