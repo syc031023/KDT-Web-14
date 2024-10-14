@@ -33,7 +33,7 @@
         <div>관심사: <span><%= userInfo.interest %></span></div>                                                                                                 
     <% } %>
     <% if(userInfo.interest) { %>
-        <div>좋아하는 색상: <span><%= userInfo.color %></span></div>                                                                                                 
+        <div>좋아하는 색상: <span><%= userInfo.color %></span><input type="color" value="<%= userInfo.color %>"></div>                                                                                                 
     <% } %>
     <% if(userInfo.number) { %>
         <div>좋아하는 숫자: <span><%= userInfo.number %></span></div>                                                                                                 

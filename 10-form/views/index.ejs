@@ -67,39 +67,48 @@
     <label for="name">이름</label>
     <input type="text" name="name" required>
     <br><br>
-    <label for="gender">성별</label>
-    <input type="radio" name="gender" value="남자" required>남자
-    <input type="radio" name="gender" value="여자" required>여자
-    <br><br>
-    <label for="birthday">생년월일</label>
-      <select name="year" id="year"></select>년
-      <select name="month" id="month"></select>월
-      <select name="day" id="day">일</select>
-    <br><br>
-    <label for="interest">관심사</label>
-    <input type="checkbox" name="interest" value="여행">여행
-    <input type="checkbox" name="interest" value="패션">패션
-    <input type="checkbox" name="interest" value="음식">음식
-    <br><br>
-    <label for="select">선택</label><br>
-    <p>좋아하는 색상 <input type="color" name="color"></p>
-    <p>좋아하는 숫자 <input type="number" name="number"></p>
+    <fieldset>
+      <legend>성별</legend>
+      <input type="radio" name="gender" id="male" value="남자" required>
+      <label for="male">남자</label>
+      <input type="radio" name="gender" id="female" value="여자" required>
+      <label for="female">여자</label>
+    </fieldset>
+    <fieldset>
+      <legend>생년월일</legend>
+      <select name="birthday" id="year">
+        <% for( let i = 0; i <= 80; i++ ) { %>
+        <option value="<%= 2024 - i %>"><%= 2024 - i %></option>
+        <% } %>
+      </select>년
+      <select name="birthday" id="month">
+        <% for( let i = 1; i <= 12; i++ ) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      </select>월
+      <select name="birthday" id="day">
+        <% for( let i = 1; i <= 31; i++ ) { %>
+        <option value="<%= i %>"><%= i %></option>
+        <% } %>
+      </select>일
+    </fieldset>
 
+    <fieldset>
+      <legend>관심사</legend>
+      <input type="checkbox" name="interest" value="여행">여행
+      <input type="checkbox" name="interest" value="패션">패션
+      <input type="checkbox" name="interest" value="음식">음식
+    </fieldset>
+
+    <fieldset>
+      <legend>선택</legend>
+      <p>좋아하는 색상 <input type="color" name="color"></p>
+      <p>좋아하는 숫자 <input type="number" name="number"></p>
+
+    </fieldset>
+    <br>
     <button>회원가입</button>
   </form>
-
-  <script>
-    for (let i = 1970; i <= 2030; i++) {
-      $("#year").append('<option value="' + i + '">' + i + '</option>');
-    }
-    for (let i = 1; i <= 12; i++) {
-      $("#month").append('<option value="' + i + '">' + i + '</option>');
-    }
-    for (let i = 1; i <= 31; i++) {
-      $("#day").append('<option value="' + i + '">' + i + '</option>');
-    }
-  </script>
-
 </body>
 
 </html>
