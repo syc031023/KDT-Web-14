@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 2</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<!-- axios CDN -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<body>
+    <form name="login">
+        <fieldset>
+            <legend>ID</legend>
+            <input type="text" name="userid" id="userid">
+        </fieldset>
+        <fieldset>
+            <legend>Password</legend>
+            <input type="text" name="userpw" id="userpw">
+        </fieldset>
+        <button type="button" onclick="loginBtn()">로그인하기</button>
+    </form>
+
+    <div class="result"></div>
+
+    <script>
+
+        const resultBox =document.querySelector(".result");
+
+        function loginBtn(){
+            const form = document.forms["login"];
+
+            const data = {
+                id: form.userid.value,
+                pw: form.userpw.value,
+            };
+
+            axios({
+                method: "post",
+                url: "/login",
+                data: data,
+            });
+
+            console.log(data);
+            
+
+
+        }
+    </script>
+</body>
+</html>
