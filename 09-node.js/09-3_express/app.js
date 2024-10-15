@@ -24,7 +24,7 @@ app.get('/', function (req, res){  // 요청, 응답
     res.render("index", {btns: ["사과", "오렌지", "키위"], 
         isLogin: true,
         me: {
-            name: "luna",
+            name: "영채",
             msg: "반갑습니다.",
         },
     });

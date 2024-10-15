@@ -9,7 +9,22 @@
 
 <!-- axios CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<style>
+    .success {
+        color: blue;
+        font-weight: 700;
+    }
+
+    .error {
+        color: red;
+        font-weight: 700;
+    }
+
+</style>
+
 <body>
+    <h1>LOGIN</h1>
     <form name="login">
         <fieldset>
             <legend>ID</legend>
@@ -19,16 +34,16 @@
             <legend>Password</legend>
             <input type="text" name="userpw" id="userpw">
         </fieldset>
-        <button type="button" onclick="loginBtn()">로그인하기</button>
+        <button type="button" onclick="clickLogin()">로그인하기</button>
     </form>
 
-    <div class="result"></div>
+    <div class="loginResult"></div>
 
     <script>
 
-        const resultBox =document.querySelector(".result");
+        const loginResult =document.querySelector(".loginResult");
 
-        function loginBtn(){
+        function clickLogin(){
             const form = document.forms["login"];
 
             const data = {
@@ -38,11 +53,20 @@
 
             axios({
                 method: "post",
-                url: "/login",
+                url: "/practice2-post",
                 data: data,
+            }).then((res) => {
+                console.log(res.data);
+                if(res.data.isSuccess){
+                    loginResult.textContent = `${res.data.loginInfo.id}님! 로그인 성공!`
+                    loginResult.classList.remove("error");
+                    loginResult.classList.add("success");
+                } else {
+                    loginResult.textContent = `아이디 또는 패스워드 오류`
+                    loginResult.classList.remove("success");
+                    loginResult.classList.add("error");
+                }
             });
-
-            console.log(data);
             
 
 

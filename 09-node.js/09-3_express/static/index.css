@@ -1,8 +1,11 @@
 header {
     background-color: black;
-    color: white;
 }
 
 header li {
     list-style: none;
+}
+
+header a {
+    color: white;
 }

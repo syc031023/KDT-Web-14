@@ -5,20 +5,50 @@ const PORT = 8000;
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+// body-parser
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()); // json 형태로 사용하고 받겠다
-
-const userid = "syc031023";
-const userpw = "12345678";
 
 
 app.get("/", (req, res) => {
     res.render("index");
 })
 
+// Practice 1
 app.get("/practice1", (req, res) => {
     res.render("practice1");
-})
+});
+
+app.get("/practice1-get", (req, res) => {
+    console.log(req.query);
+    res.json(req.query);
+});
+
+
+
+// Practice 2
+
+const loginInfo = {
+    userid: "syc031023",
+    userpw: "1234",
+};
+
+app.get("/practice2", (req, res) => {
+    res.render("practice2");
+});
+
+app.post("/practice2-post", (req, res) => {
+    console.log(req.body);
+    console.log(loginInfo);
+    
+    if(loginInfo.userid === req.body.id && loginInfo.userpw === req.body.pw){
+        res.json({loginInfo: req.body, isSuccess: true});
+    } else {
+        res.json({isSuccess: false});
+    }
+});
+
+//////////////////////////////////////////////
 
 app.get("/login", (req, res) => {
     res.send(req.body);
