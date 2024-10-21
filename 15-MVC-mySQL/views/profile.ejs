@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필</title>
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/profile.js"></script>
+</head>
+<body>
+    <form name="profile-form">
+        <fieldset>
+            <legend>회원정보</legend>
+            <!-- <label for="id">No.</label> -->
+            <input type="hidden" id="id" value="<%= data.id %>" />
+      <!-- readonly: userid는 수정 불가능 (조건임) -->
+            <label for="userid">ID</label>
+            <input type="text" name="userid" name="userid" value="<%= data.userid %>" required><br><br>
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name" value="<%= data.name  %>" required><br><br>
+            <label for="userpw">PW</label>
+            <input type="text" name="userpw" id="userpw" value="<%= data.pw %>" required><br><br>
+            <button type="button" onclick="profileEdit()">수정하기</button>
+            <button type="button" onclick="profileDelete()">삭제하기</button>
+        </fieldset>
+    </form>
+</body>
+</html>

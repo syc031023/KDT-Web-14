@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/signin.js"></script>
+</head>
+<body>
+    <form name="signin-form">
+        <fieldset>
+            <legend>LOGIN</legend>
+            <label for="userid">ID</label>
+            <input type="text" name="userid" id="userid" placeholder="아이디를 입력하세요."><br><br>
+            <label for="userpw">PW</label>
+            <input type="text" name="userpw" id="userpw" placeholder="비밀번호를 입력하세요."><br><br>
+            <button type="button" onclick="clickSignin()">로그인</button>
+        </fieldset>
+    </form>
+    <!-- <div class="loginResult"></div> -->
+</body>
+</html>
