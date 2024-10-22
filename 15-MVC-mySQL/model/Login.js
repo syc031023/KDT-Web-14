@@ -37,10 +37,11 @@ const getProfile = async (id) => {
     return result;
 };
 
-const editProfile = async () => {
-    const query = "UPDATE user SET name = ?, pw = ? WHERE id = ?";
-    const values = [data.name, data.pw, data.id];
-
+const editProfile = async (data) => {
+    const query = "UPDATE user SET userid = ?, name = ?, pw = ? WHERE id = ?";
+    const values = [data.userid, data.name, data.userpw, data.id];
+    console.log(values);
+    
     const [result] = await pool.query(query, values);
     return result;
 }

@@ -1,4 +1,7 @@
-const Visitor = require("../model/Visitor");
+// models/index를 불러와서 export한 db 객체
+const models = require("../models/index");
+// const Visitor = require("../model/Visitor");
+const Visitor = models.Visitor;
 
 // GET
 const main = (req, res) => {

@@ -46,7 +46,7 @@ router.post("/signin", controller2.post_signin);
 router.get("/profile/:id", controller2.get_profile);
 
 // PATCH /profile/edit - 프로필 페이지 수정
-router.patch("/profile/edit", controller2.edit_profile);
+router.patch("/profile/:id", controller2.edit_profile);
 
 // DELETE /profile/delete - 프로필 페이지 탈퇴
 router.delete("/profile/delete", controller2.delete_profile);

@@ -33,7 +33,7 @@
         </thead>
         <tbody>
             <% for( let i = 0; i < data.length; i++ ) { %>
-                <tr id="tr_<%= i+1 %>">
+                <tr id="tr_<%= data[i].id %>">
                     <td><%= data[i].id %></td>
                     <td><%= data[i].name %></td>
                     <td><%= data[i].comment %></td>

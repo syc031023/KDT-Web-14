@@ -33,7 +33,7 @@ const post_signin = async (req, res) => {
     console.log("req.body: ",req.body);
 
     const userInfo = await Login.postSignin(req.body.userid, req.body.userpw);    
-    console.log('userInfo',userInfo[0].id);
+    
     if(userInfo[0]){
         res.json({isSuccess: true, id: userInfo[0].id, userid: userInfo[0].userid});
     } else {
@@ -60,8 +60,8 @@ const get_profile = async (req, res) => {
 
 const edit_profile = async (req, res) => {
     console.log("edit_profile: ", req.body);
-
-    
+    const result = await Login.editProfile(req.body);
+    res.json({result: true});
 }
 
 const delete_profile = async (req, res) => {
