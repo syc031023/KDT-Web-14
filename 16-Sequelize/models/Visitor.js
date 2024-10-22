@@ -36,7 +36,7 @@ const Visitor = (Sequelize, DataTypes) => {
         {
             // tableName: "visitor2", // 실제 테이블 이름 명시, 값을 안주면 param1의 모델이름 + s -> visitors로 생성
             freezeTableName: true, // 모델의 이름 그대로 테이블 이름을 고정
-            timestamps: true, // 데이터가 추가되고 수정된 시간을 자동으로 컬럼으로 만들어서 기록
+            timestamps: false, // 데이터가 추가되고 수정된 시간을 자동으로 컬럼으로 만들어서 기록
         }
     ); // define의 결과값 반환
 };
