@@ -44,7 +44,6 @@ const post_signin = async (req, res) => {
     // const userInfo = await Login.postSignin(req.body.userid, req.body.userpw);    
 
     const userInfo = await User.findOne({
-        
         where: {
             userid: req.body.userid,
             pw: req.body.userpw,
