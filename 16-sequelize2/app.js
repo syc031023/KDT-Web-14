@@ -9,11 +9,16 @@ app.set("views", "./views");
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+app.use("/", router);
 
-sequelize.sync({force: false}).then(() => {
+
+sequelize
+.sync({force: false})
+.then(() => {
     app.listen(PORT, () => {
         console.log(`http://localhost:${PORT}`); 
     });
-}).catch((err) => {
+})
+.catch((err) => {
     console.log(err);
 });

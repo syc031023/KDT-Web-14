@@ -12,6 +12,8 @@ const sequelize = new Sequelize(
 // models/Visitor.js에서 정의한 model이 DB 객체에 들어감
 const Profile = require("./Profile")(sequelize, Sequelize.DataTypes);
 const Player = require("./Player")(sequelize, Sequelize.DataTypes);
+const Team = require("./Team")(sequelize, Sequelize.DataTypes);
+
 // TODO: 관계 형성
 
 // 1) Player : Profile = 1:1 관계 
@@ -22,10 +24,15 @@ Player.hasOne(Profile, {
 
 Profile.belongsTo(Player, {foreignKey: "player_id"});
 
+// 2) Team : Player = 1 : N
+Team.hasMany(Player, {foreignKey: "team_id"});
+Player.belongsTo(Team, {foreignKey: "team_id"});
+
 // TODO: 관계 정의한 모델들을 db 객체에 저장
 
 db.Player  = Player;
 db.Profile = Profile;
+db.Team = Team;
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

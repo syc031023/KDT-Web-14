@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGIN</title>
+  <!-- axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <%- include('./header') %>
+  <form name="login">
+    <fieldset>
+      <legend>ID</legend>
+      <input type="text" name="id" id="id"><br>
+      <legend>PW</legend>
+      <input type="text" name="pw" id="pw"><br>
+    </fieldset>
+    <button type="button" onclick="clickLogin()">로그인하기</button>
+  </form>
+
+  <script>
+    function clickLogin() {
+    //   event.preventDefault();
+      const form = document.forms["login"];
+
+      const data = {
+        id: form.id.value,
+        pw: form.pw.value,
+    };
+
+    console.log(data);
+    
+
+    axios({
+        method: "POST",
+        url: `/login`,
+        data: data,
+    }).then((res) => {
+        // console.log("res.data: ",res.data);
+        // if(isSuccess) {
+        //     alert(`${req.body.id}님! 로그인 성공!`);
+        //     window.location.href = "/";
+        // } else {
+        //     alert(`아이디 또는 패스워드 오류`);
+        // }
+
+    });
+
+
+
+    }
+  </script>
+</body>
+
+</html>
