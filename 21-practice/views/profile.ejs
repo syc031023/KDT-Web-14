@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>프로필</h1>
+    <a href="/">HOME</a>
+    <form name="profile-form">
+        <p>고객 NO.<%= data.id %></p>
+        <label for="userid">아이디</label><br>
+        <input type="text" id="userid" name="userid" value="<%= data.userid  %>"><br>
+        <label for="pw">비밀번호</label><br>
+        <input type="text" id="pw" name="pw"><br>
+        <label for="name">이름</label><br>
+        <input type="text" id="name" name="name" value="<%= data.name %>"><br><br>
+        <button type="button" onclick="editProfile('<%= data.id %>')">수정하기</button>
+        <button type="button" onclick="deleteProfile('<%= data.id %>')">탈퇴하기</button>
+    </form>
+
+    <script>
+        const form = document.forms["profile-form"];
+
+        async function editProfile(id) {
+            const {data} = await axios({
+                method: "PATCH",
+                url: `/profile/${id}`,
+                data: {
+                    id: id,
+                    userid: form.userid.value,
+                    name: form.name.value,
+                    pw: form.pw.value,
+                },
+            });
+
+            console.log(data);
+        }
+
+        async function deleteProfile(id) {
+            if(!confirm("정말 탈퇴하시겠습니까?"))return;
+
+            const data = await axios({
+                method: "DELETE",
+                url: "/profile/delete",
+                data: {
+                    id: id,
+                }
+            });
+
+            alert("회원 탈퇴 성공");
+            document.location.href = "/";
+        }
+    </script>
+</body>
+</html>

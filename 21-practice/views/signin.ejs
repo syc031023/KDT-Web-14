@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>로그인</h1>
+    <a href="/">HOME</a>
+    <form name="signin-form">
+        <label for="userid">아이디</label><br>
+        <input type="text" id="userid" name="userid"><br>
+        <label for="pw">비밀번호</label><br>
+        <input type="password" id="pw" name="pw"><br>
+        <button type="button" onclick="signIn()">로그인</button>
+    </form>
+
+    <script>
+        async function signIn() {
+            const form = document.forms["signin-form"];
+
+            const {data} = await axios({
+                method: "POST",
+                url: "/signin",
+                data: {
+                    userid: form.userid.value,
+                    pw: form.pw.value,
+                },
+            });
+
+            if(data.isSuccess){
+                localStorage.setItem("token", data.token);
+                alert(`${data.userid}님 로그인 성공!`);
+                document.location.href = `/profile/${data.id}`;
+            } else {
+                alert('아이디 또는 비밀번호가 일치하지 않습니다');
+                document.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
