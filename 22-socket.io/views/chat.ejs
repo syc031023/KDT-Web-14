@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>socket.io 채팅</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/static/chat.css">
+</head>
+
+<body>
+  <!-- [실습 1] 각 버튼 누를 때 마다 서버로 메시지 보내기 -->
+  <!-- <h1>My Chat</h1>
+    <button onclick="sayHello()">Hello</button>
+    <button onclick="sayStudent()">Study</button>
+    <button onclick="sayBye()">Bye</button>
+    <p id="data-server"></p> -->
+
+  <!-- [실습 3-2] 닉네임 입력 폼 -->
+  <div class="entry-box">
+    <input type="text" id="nickname" placeholder="닉네임을 입력하세요." autofocus onkeypress="if(window.event.keyCord === 13){join();}">
+    <button onclick="join()">입장</button>
+  </div>
+
+  <!-- [실습 2] 채팅방 UI -->
+  <div class="box d-none">
+    <div class="contents">
+      <div class="chat mine">
+        <p>안녕하세요</p>
+      </div>
+      <div class="chat mine">
+        <p>안녕하세요</p>
+      </div>
+      <div class="chat others">
+        <p>반갑습니다</p>
+      </div>
+      <div class="chat mine">
+        <p>안녕하세요</p>
+      </div>
+      <div class="chat mine">
+        <p>안녕하세요</p>
+      </div>
+    </div>
+    <div class="form-box">
+      <form>
+        <select class="nickname-select" name="nickname" id="nickname">
+        </select>
+        <input type="text" id="message" name="message" placeholder="메시지 입력...">
+        <button type="button" onclick="send()">보내기</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let socket = io.connect(); // 소켓 사용을 위한 객체 생성
+    let myNick = '';
+
+    socket.on("connect", () => {
+      console.log("클라이언트 연결 완료 :: ", socket.id);
+    });
+
+    // function sayHello() {
+    //     socket.emit("hello", {who: "cilent", msg: "hello"})
+    // };
+    // socket.on("helloKr", (data) => {
+    //     document.querySelector("#data-server").textContent = `${data.who} : ${data.msg}`;
+    // });
+
+    // function sayStudent() {
+    //     socket.emit("student", {who: "cilent", msg: "student"});
+    // };
+    // socket.on("studentKr", (data) => {
+    //     document.querySelector("#data-server").textContent = `${data.who} : ${data.msg}`;
+    // });
+
+    // function sayBye() {
+    //     socket.emit("bye", {who: "client", msg: "bye"});
+    // };
+    // socket.on("byeKr", (data) => {
+    //     document.querySelector("#data-server").textContent = `${data.who} : ${data.msg}`;
+    // });
+
+    // [실습 3] 채팅방 입장 문구
+    socket.on("notice", (data) => {
+      document.querySelector(".contents").insertAdjacentHTML("beforeend", `<div class=notice>${data}</div>`);
+    });
+
+    // [실습 3-2] 채팅창 입장 문구 socket.id -> nickname
+    // 서버가 닉네임 알고 있어야 함
+    // 닉네임을 서버로 보내줘야 함
+    function join() {
+      socket.emit("setNick", document.querySelector("#nickname").value);
+    }
+
+    // 입장 성공
+    socket.on("entrySuccess", (nickname) => {
+      document.querySelector("#nickname").disabled = true;
+      document.querySelector(".entry-box>button").disabled = true;
+      document.querySelector(".box").classList.remove("d-none");
+      // document.querySelector(".entry-box").classList.add("d-none");
+      myNick = nickname;
+    });
+
+    // 닉네임 중복일 경우
+    socket.on("error", (error) => {
+      alert(error);
+    });
+
+    // 닉네임 리스트 업데이트
+    socket.on("updateNicks", (nickObjs) => {
+      let options = `<option value="all">전체</option>`
+
+      // 본인 제외하고 option 추가
+      for (let key in nickObjs) {
+        if (key !== socket.id) {
+          options += `<option value="${key}">${nickObjs[key]}</option>`;
+        }
+      }
+
+      document.querySelector(".nickname-select").innerHTML = options;
+    });
+
+    function send() {
+      const data = {
+        dm: document.querySelector(".nickname-select").value,
+        myNick,
+        msg: document.querySelector("#message").value,
+      }
+
+      //   document.querySelector(".contents").insertAdjacentHTML("beforeend", `<div class="chat mine"><p>${data.msg}</p></div>`);
+
+      document.querySelector("#message").value = "";
+      socket.emit("send", data);
+    }
+
+
+
+    socket.on(`sendTo`, ({
+      nickname,
+      msg,
+      dm
+    }) => {
+      console.log(to, myNick);
+
+      if (to === myNick) {
+        document.querySelector(".contents").insertAdjacentHTML("beforeend", `<div class="chat others"><p>${from}: ${msg}</p></div>`);
+      }
+
+      console.log(from, msg);
+
+    });
+
+    // 채팅창에 주고받은 메시지 표시
+    socket.on("showMessage", (data) => {
+      const chatList = document.querySelector(".contents");
+      const div = document.createElement("div");
+
+      if (myNick === data.nick) {
+        div.classList.add("chat", "mine");
+      } else {
+        div.classList.add("chat", "others");
+      }
+
+      
+
+      if(data.dm){
+        div.classList.add("dm");
+        div.innerHTML += `<p>${data.dm}${data.nick}: ${data.msg}</p>`;
+      } else {
+        div.innerHTML += `<p>${data.nick}: ${data.msg}</p>`;
+      }
+
+      chatList.append(div);
+
+    //   메시지가 많아져서 스크롤 생기더라도 하단 고정
+      chatList.scrollTop = chatList.scrollHeight;
+
+    });
+  </script>
+</body>
+
+</html>

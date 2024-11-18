@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>socket.io room 기능</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/static/chat.css">
+</head>
+
+<body>
+  <!-- 채팅방, 닉네임 입력 폼 -->
+  <div class="info-container">
+    <form id="room-info">
+      <input type="text" id="roomName" placeholder="채팅방">
+      <input type="text" id="nickname" placeholder="닉네임" autofocus onkeypress="if(window.event.keyCord === 13){join();}">
+      <button type="button" onclick="join()">생성</button>
+    </form>
+    <h4>입장 가능한 채팅방 목록</h4>
+    <ul id="room-list"></ul>
+  </div>
+
+  <!-- [실습 2] 채팅방 UI -->
+  <div class="box d-none">
+    <div class="contents">
+      <div class="chat mine">
+        <p>안녕하세요</p>
+      </div>
+      <div class="chat others">
+        <p>반갑습니다</p>
+      </div>
+    </div>
+    <div class="form-box">
+      <form>
+        <select class="nickname-select" name="nickname" id="nickname">
+        </select>
+        <input type="text" id="message" name="message" placeholder="메시지 입력...">
+        <button type="button" onclick="send()">보내기</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let socket = io(); // 소켓 사용을 위한 객체 생성
+    let roomInfo = document.querySelector("#room-info");
+    let roomName = document.querySelector("#roomName");
+    let nickname = document.querySelector("#nickname");
+
+    // 채팅방 생성, 입장
+    function join() {
+      // 빈 값 유효성 검사
+      if (roomName.value === "" || nickname.value === "") {
+        alert("채팅방 이름, 닉네임을 작성해주세요");
+        return;
+      }
+
+      const data = {
+        roomName: roomName.value,
+        nickname: nickname.value
+      };
+
+      // 서버에 방 생성 요청
+      socket.emit("create", data, () => {
+        const infoContainer = document.querySelector(".info-container");
+        const chatContainer = document.querySelector(".box");
+        infoContainer.classList.add("d-none");
+        chatContainer.classList.remove("d-none");
+
+        myNick = nickname.value;
+      });
+    }
+
+    socket.on("updateRoom", (roomList) => {
+      const room_list = document.querySelector("#room-list");
+      room_list.textContent = "";
+
+      roomList.forEach((room) => {
+        console.log(room);
+        const li = document.createElement("li");
+        li.innerHTML = `${room} <button onclick="enterRoom('${room}')">입장</button>`
+        room_list.append(li);
+      });
+    });
+
+    function enterRoom(room) {
+        roomName.value = room;
+        nickname.focus();
+        roomInfo.querySelector("button").textContent = "입장";
+    }
+
+    socket.on("notice", (data) => {
+      document.querySelector(".contents").insertAdjacentHTML("beforeend", `<div class=notice>${data}</div>`);
+    });
+
+    
+    socket.on("userList", (userList) => {
+        let options = `<option value="all">전체</option>`
+
+      // 본인 제외하고 option 추가
+      for (let user of userList) {
+        console.log(user);
+        if (user.key !== socket.id) {
+          options += `<option value="${user.key}">${user.nickname}</option>`;
+        }
+      }
+
+      document.querySelector(".nickname-select").innerHTML = options;
+    });
+
+    function send() {
+      const data = {
+        dm: document.querySelector(".nickname-select").value,
+        nick: myNick,
+        msg: document.querySelector("#message").value,
+        room: roomName.value,
+      }
+
+      //   document.querySelector(".contents").insertAdjacentHTML("beforeend", `<div class="chat mine"><p>${data.msg}</p></div>`);
+
+      document.querySelector("#message").value = "";
+      socket.emit("send", data);
+    }
+
+    socket.on("showMessage", (data) => {
+      const chatList = document.querySelector(".contents");
+      const div = document.createElement("div");
+
+      if (myNick === data.nick) {
+        div.classList.add("chat", "mine");
+      } else {
+        div.classList.add("chat", "others");
+      }
+
+      
+
+      if(data.dm){
+        div.classList.add("dm");
+        div.innerHTML += `<p>${data.dm}${data.nick}: ${data.msg}</p>`;
+      } else {
+        div.innerHTML += `<p>${data.nick}: ${data.msg}</p>`;
+      }
+
+      chatList.append(div);
+
+    //   메시지가 많아져서 스크롤 생기더라도 하단 고정
+      chatList.scrollTop = chatList.scrollHeight;
+
+    });
+  </script>
+</body>
+
+</html>
