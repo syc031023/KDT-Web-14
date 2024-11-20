@@ -37,21 +37,25 @@
   }
 }
 
-
-.form-box {
-  width: 500px;
+.bookInfo {
+  width: 350px;
+  height: 400px;
+  background-color: cornsilk;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
-.form-box > h1 {
-  background-color: rgba(255, 166, 0, 0.459);
-  color: orangered;
+h2 {
+  color: orange;
 }
 
-.input-box {
-  margin: 10px;
-  width: 80%;
+.bookInfo>img {
+  width: 100px;
+  height: 150px;
 }
 
-input {
-  width: 200px;
+p {
+  text-align: start;
 }
