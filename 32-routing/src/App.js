@@ -29,17 +29,19 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Header /> */}
+        <Header />
         <Navbar></Navbar>
 
         <Routes>
-          {/* <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
           <Route
             path="/products"
             element={<ProductPage products={products} />}
           />
-          <Route path="/products/:id" element={<ProductDetailPage />} /> */}
+          <Route path="/products/:id" element={<ProductDetailPage />} />
 
+          {/* 실습 */}
+          <Route path="/" element={<Navbar/>} /> 
           <Route path="/student/:name" element={<Student names={names}/>} />
         </Routes>
       </BrowserRouter>

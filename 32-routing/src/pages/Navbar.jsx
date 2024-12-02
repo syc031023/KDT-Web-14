@@ -16,7 +16,7 @@ export default function Navbar() {
                         <Link to="/student/codingon">코딩온</Link>
                     </li>
                     <li style={{ margin: '4px' }}>
-                        <Link to="/student/new?name=kdt3rd">searchParams</Link>
+                        <Link to="/student/new?name=kdt14th">searchParams</Link>
                     </li>
                 </ul>
             </nav>
